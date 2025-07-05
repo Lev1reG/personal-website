@@ -1,6 +1,7 @@
-import Education from "@/components/Home/Education"
-import Hero from "@/components/Home/Hero"
-import WorkExperience from "@/components/Home/WorkExperience"
+import Education from "@/components/Home/Education";
+import Hero from "@/components/Home/Hero";
+import Projects from "@/components/Home/Projects";
+import WorkExperience from "@/components/Home/WorkExperience";
 
 const Home = () => {
   return (
@@ -8,8 +9,9 @@ const Home = () => {
       <Hero />
       <WorkExperience />
       <Education />
+      <Projects />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
