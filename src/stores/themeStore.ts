@@ -8,7 +8,7 @@ interface ThemeState {
   isDark: boolean;
   setMode: (mode: ThemeMode) => void;
   cycleTheme: () => void;
-  intializeTheme: () => void;
+  initializeTheme: () => void;
 }
 
 export const useThemeStore = create<ThemeState>()(
@@ -33,7 +33,7 @@ export const useThemeStore = create<ThemeState>()(
         updateDOM(nextMode);
       },
 
-      intializeTheme: () => {
+      initializeTheme: () => {
         const currentMode = get().mode;
         updateDOM(currentMode);
 

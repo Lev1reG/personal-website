@@ -3,7 +3,7 @@ import { useThemeStore } from "@/stores/themeStore";
 import { useEffect } from "react";
 
 function App() {
-  const initializeTheme = useThemeStore((store) => store.intializeTheme);
+  const initializeTheme = useThemeStore((store) => store.initializeTheme);
 
   useEffect(() => {
     initializeTheme();
