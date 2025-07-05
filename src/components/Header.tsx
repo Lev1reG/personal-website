@@ -39,9 +39,9 @@ const Header = () => {
   ];
 
   return (
-    <header className="dark:bg-neutral-900 bg-neutral-100 border-b-2 border-neutral-400">
+    <header className="fixed w-full dark:bg-neutral-900 bg-neutral-100 border-b-2 border-neutral-400 z-50">
       <nav className="container mx-auto p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-brand-500">Deren T.</h1>
+        <h1 className="text-2xl font-bold text-brand-500 z-[60]">Deren T.</h1>
 
         {/* Hamburger Menu for Mobile */}
         <button
@@ -83,7 +83,7 @@ const Header = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden"
+            className="md:hidden overflow-hidden dark:bg-neutral-900 bg-neutral-100"
           >
             <motion.div
               initial={{ y: -20 }}
