@@ -6,7 +6,15 @@ function App() {
   const initializeTheme = useThemeStore((store) => store.initializeTheme);
 
   useEffect(() => {
+    document.body.classList.add("preload");
+
     initializeTheme();
+
+    const timer = setTimeout(() => {
+      document.body.classList.remove("preload");
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [initializeTheme]);
 
   return <AppRouter />;

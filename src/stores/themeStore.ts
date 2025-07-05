@@ -41,7 +41,7 @@ export const useThemeStore = create<ThemeState>()(
           const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
           const handleChange = () => {
             if (get().mode === "system") {
-              updateDOM('system');
+              updateDOM("system");
             }
           };
 
@@ -58,25 +58,26 @@ export const useThemeStore = create<ThemeState>()(
 );
 
 const updateDOM = (mode: ThemeMode) => {
-    const root = document.documentElement;
-    let shouldBeDark = false;
+  const root = document.documentElement;
+  let shouldBeDark = false;
 
-    if (mode === 'dark') {
-        shouldBeDark = true;
-    } else if (mode === 'light') {
-        shouldBeDark = false;
-    }
-    else if (mode === 'system') {
-        shouldBeDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    }
+  if (mode === "dark") {
+    shouldBeDark = true;
+  } else if (mode === "light") {
+    shouldBeDark = false;
+  } else if (mode === "system") {
+    shouldBeDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
 
-    useThemeStore.setState({ isDark: shouldBeDark });
+  useThemeStore.setState({ isDark: shouldBeDark });
 
-    if (shouldBeDark) {
-        root.classList.add("dark");
-        root.classList.remove("light");
-    } else {
-        root.classList.add("light");
-        root.classList.remove("dark");
-    }
-}
+  root.style.transition = "background-color 0.3s ease, color 0.3s ease";
+
+  if (shouldBeDark) {
+    root.classList.add("dark");
+    root.classList.remove("light");
+  } else {
+    root.classList.add("light");
+    root.classList.remove("dark");
+  }
+};
