@@ -1,34 +1,13 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { useThemeStore } from "@/stores/themeStore";
-import { SunIcon, MoonIcon, DesktopIcon } from "@phosphor-icons/react";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import ThemeToggle from "@/components/ThemeToogle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const { mode, setMode } = useThemeStore();
 
   const toogleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const getThemeIcon = () => {
-    switch (mode) {
-      case "light":
-        return <SunIcon size={32} weight="bold" />;
-      case "dark":
-        return <MoonIcon size={32} weight="bold" />;
-      case "system":
-        return <DesktopIcon size={32} weight="bold" />;
-      default:
-        return <DesktopIcon size={32} weight="bold" />;
-    }
   };
 
   const menuItems = [
@@ -40,8 +19,26 @@ const Header = () => {
 
   return (
     <header className="fixed w-full dark:bg-neutral-900 bg-neutral-100 border-b-2 border-neutral-400 z-50">
-      <nav className="container mx-auto p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-brand-500 z-[60]">Deren T.</h1>
+      <nav className="container mx-auto p-4 lg:px-16 flex justify-between items-center">
+        <div className="flex flex-row items-center space-x-0 md:space-x-10 lg:space-x-20">
+          <h1 className="text-2xl font-bold text-brand-500 z-[60]">Deren T.</h1>
+          <div className="hidden md:flex space-x-5 lg:space-x-12">
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="text-base font-bold dark:text-neutral-100 text-neutral-900 dark:hover:text-brand-500 hover:text-brand-500 transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Theme Toggle Button */}
+        <div className="hidden md:block">
+          <ThemeToggle iconSize={32} />
+        </div>
 
         {/* Hamburger Menu for Mobile */}
         <button
@@ -109,43 +106,12 @@ const Header = () => {
                 </motion.div>
               ))}
 
-              {/* Theme Toggle Button */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 + menuItems.length * 0.05 }}
-              >
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <button className="text-neutral-900 dark:text-neutral-100 hover:text-brand-500 dark:hover:text-brand-500 transition-colors">
-                      {getThemeIcon()}
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuCheckboxItem
-                      checked={mode === "light"}
-                      onCheckedChange={() => setMode("light")}
-                    >
-                      <SunIcon size={16} weight="bold" className="mr-2" />
-                      Light
-                    </DropdownMenuCheckboxItem>
-                    <DropdownMenuCheckboxItem
-                      checked={mode === "dark"}
-                      onCheckedChange={() => setMode("dark")}
-                    >
-                      <MoonIcon size={16} weight="bold" className="mr-2" />
-                      Dark
-                    </DropdownMenuCheckboxItem>
-                    <DropdownMenuCheckboxItem
-                      checked={mode === "system"}
-                      onCheckedChange={() => setMode("system")}
-                    >
-                      <DesktopIcon size={16} weight="bold" className="mr-2" />
-                      System
-                    </DropdownMenuCheckboxItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </motion.div>
+              {/* Mobile Theme Toggle Button */}
+              <ThemeToggle
+                iconSize={32}
+                animated={true}
+                animationDelay={0.1 + menuItems.length * 0.05}
+              />
             </motion.div>
           </motion.div>
         )}
