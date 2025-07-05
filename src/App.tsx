@@ -1,11 +1,7 @@
+import AppRouter from "@/components/AppRouter";
+
 function App() {
-  return (
-    <>
-      <div className="p-4">
-        <h1 className="text-4xl font-bold">Deren Personal Website</h1>
-      </div>
-    </>
-  );
+  return <AppRouter />;
 }
 
 export default App;
