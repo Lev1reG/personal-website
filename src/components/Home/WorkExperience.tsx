@@ -53,9 +53,9 @@ const Experience = ({
   type,
 }: ExperienceProps) => {
   return (
-    <div className="w-full flex flex-col space-y-2">
-      <div className="flex flex-row justify-between items-center">
-        <div className="flex flex-row items-center space-x-2">
+    <div className="w-full flex flex-col justify-center items-center space-y-2">
+      <div className="flex flex-col justify-between items-center space-y-2">
+        <div className="flex flex-col items-center space-y-2">
           {href ? (
             <a
               href={href}
@@ -73,14 +73,14 @@ const Experience = ({
 
           <Badge variant="default">{type}</Badge>
         </div>
-        <p className="text-xs font-medium text-right dark:text-neutral-300 text-neutral-700">
+        <p className="text-xs font-medium text-center dark:text-neutral-300 text-neutral-700">
           {date}
         </p>
       </div>
-      <h3 className="text-sm font-medium dark:text-neutral-300 text-neutral-700">
+      <h3 className="text-sm font-medium text-center dark:text-neutral-300 text-neutral-700">
         {position}
       </h3>
-      <p className="text-xs dark:text-neutral-400 text-neutral-600">
+      <p className="text-xs text-center dark:text-neutral-400 text-neutral-600">
         {description}
       </p>
     </div>
