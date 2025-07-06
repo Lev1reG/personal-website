@@ -25,12 +25,12 @@ const Journey = () => {
   ];
 
   return (
-    <article className="flex flex-col items-center justify-center space-y-8 py-8">
+    <article className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12">
       <div className="flex flex-col items-center justify-center space-y-2">
-        <h1 className="text-3xl font-bold text-center dark:text-neutral-100 text-neutral-900">
+        <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100 text-neutral-900">
           Journey
         </h1>
-        <p className="text-base font-medium text-center dark:text-neutral-400 text-neutral-600">
+        <p className="text-base lg:text-lg font-medium text-center dark:text-neutral-400 text-neutral-600">
           This section is a curated timeline of milestones, updates, and
           personal highlights throughout my journey.
         </p>
@@ -57,20 +57,20 @@ interface MyJourneyProps extends Journey {
 
 const MyJourney = ({ title, description, date, isLast }: MyJourneyProps) => {
   return (
-    <div className="flex flex-row space-x-2">
+    <div className="flex flex-row space-x-2 lg:space-x-5">
       <div className="flex flex-col items-center">
-        <div className="w-5 h-5 rounded-full bg-brand-500 shadow-sm z-10" />
+        <div className="w-5 h-5 lg:w-7 lg:h-7 rounded-full bg-brand-500 shadow-sm z-10 flex-shrink-0" />
 
         {!isLast && (
           <div className="w-0.5 h-full bg-neutral-900 dark:bg-neutral-100" />
         )}
       </div>
 
-      <div className="w-full flex flex-col space-y-2 pb-4">
-        <p className="text-sm font-medium text-brand-600 dark:text-brand-400">
+      <div className="w-full flex flex-col space-y-2 pb-4 lg:pb-8">
+        <p className="text-sm lg:text-lg font-medium text-brand-600 dark:text-brand-400">
           {date}
         </p>
-        <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+        <h2 className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100">
           {title}
         </h2>
         <p className="text-xs dark:text-neutral-400 text-neutral-600">
