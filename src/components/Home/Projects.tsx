@@ -32,7 +32,7 @@ const Projects = () => {
   ];
 
   return (
-    <article className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8">
+    <article id="projects" className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8">
       <div className="flex flex-col items-center justify-center space-y-2">
         <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
           Projects

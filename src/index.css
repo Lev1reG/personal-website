@@ -159,3 +159,8 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}

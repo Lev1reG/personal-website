@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToogle";
 
 const Header = () => {
@@ -10,12 +9,12 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const menuItems = [
-    { name: "Home", path: "#" },
-    { name: "Experience", path: "#" },
-    { name: "Projects", path: "#" },
-    { name: "Journey", path: "#" },
-  ];
+const menuItems = [
+  { name: "Home", path: "#hero" },
+  { name: "Experience", path: "#workexperience" },
+  { name: "Projects", path: "#projects" },
+  { name: "Journey", path: "#journey" },
+];
 
   return (
     <header className="fixed w-full dark:bg-neutral-900 bg-neutral-100 border-b-2 border-neutral-400 z-50">
@@ -24,13 +23,13 @@ const Header = () => {
           <h1 className="text-2xl font-bold text-brand-500 z-[60]">Deren T.</h1>
           <div className="hidden md:flex space-x-5 lg:space-x-12">
             {menuItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
-                to={item.path}
+                href={item.path}
                 className="text-base font-bold dark:text-neutral-100 text-neutral-900 dark:hover:text-brand-500 hover:text-brand-500 transition-colors"
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -96,13 +95,13 @@ const Header = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + index * 0.05 }}
                 >
-                  <Link
-                    to={item.path}
+                  <a
+                    href={item.path}
                     className="text-base font-bold dark:text-neutral-100 text-neutral-900 dark:hover:text-brand-500 hover:text-brand-500 transition-colors block"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
 
