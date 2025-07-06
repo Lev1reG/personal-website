@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 
 const Education = () => {
-  const experiences = [
+  const experiences: ExperienceProps[] = [
     {
       university: "Universitas Gadjah Mada",
       degree: "Bachelor Degree in Information Engineering",
       date: "2022 - 2026 (Expected)",
+      href: "https://ugm.ac.id/id/prodi/teknologi-informasi/",
     },
   ];
 
@@ -28,6 +29,7 @@ const Education = () => {
             university={exp.university}
             degree={exp.degree}
             date={exp.date}
+            href={exp.href}
           />
         ))}
       </div>
@@ -39,14 +41,26 @@ interface ExperienceProps {
   university: string;
   degree: string;
   date: string;
+  href?: string;
 }
 
-const Experience = ({ university, degree, date }: ExperienceProps) => {
+const Experience = ({ university, degree, date, href }: ExperienceProps) => {
   return (
     <div className="flex flex-col justify-center items-center lg:items-start space-y-2">
       <div className="w-full flex flex-col lg:flex-row lg:justify-between items-center space-y-2 lg:space-y-0">
         <h2 className="text-lg lg:text-2xl font-bold text-center text-neutral-900 dark:text-neutral-100">
-          {university}
+          {href ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-900 dark:text-neutral-100 hover:underline"
+            >
+              {university}
+            </a>
+          ) : (
+            university
+          )}
         </h2>
         <p className="text-xs lg:text-sm font-medium dark:text-neutral-400 text-neutral-600 text-center">
           {date}
