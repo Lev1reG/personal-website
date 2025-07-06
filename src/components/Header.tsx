@@ -1,23 +1,35 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
 import ThemeToggle from "@/components/ThemeToogle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const toogleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-const menuItems = [
-  { name: "Home", path: "#hero" },
-  { name: "Experience", path: "#workexperience" },
-  { name: "Projects", path: "#projects" },
-  { name: "Journey", path: "#journey" },
-];
+  const menuItems = [
+    { name: "Home", path: "#hero" },
+    { name: "Experience", path: "#workexperience" },
+    { name: "Projects", path: "#projects" },
+    { name: "Journey", path: "#journey" },
+  ];
 
   return (
     <header className="fixed w-full dark:bg-neutral-900 bg-neutral-100 border-b-2 border-neutral-400 z-50">
+      {/* Progress bar */}
+      <motion.div
+        className="h-1 bg-brand-600 origin-left"
+        style={{ scaleX }}
+      />
+
       <nav className="container mx-auto p-4 lg:px-16 flex justify-between items-center">
         <div className="flex flex-row items-center space-x-0 md:space-x-10 lg:space-x-20">
           <h1 className="text-2xl font-bold text-brand-500 z-[60]">Deren T.</h1>

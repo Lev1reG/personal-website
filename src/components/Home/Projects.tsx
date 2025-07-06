@@ -5,6 +5,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "motion/react";
 
 const Projects = () => {
   const projects = [
@@ -32,7 +33,14 @@ const Projects = () => {
   ];
 
   return (
-    <article id="projects" className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8">
+    <motion.article 
+      id="projects" 
+      className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
       <div className="flex flex-col items-center justify-center space-y-2 lg:space-y-3">
         <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
           Projects
@@ -42,18 +50,40 @@ const Projects = () => {
           purpose.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <motion.div 
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2
+            }
+          }
+        }}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         {projects.map((project, index) => (
-          <ProjectCard
+          <motion.div
             key={index}
-            title={project.title}
-            description={project.description}
-            href={project.href}
-            technologies={project.technologies}
-          />
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              show: { opacity: 1, y: 0 }
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              href={project.href}
+              technologies={project.technologies}
+            />
+          </motion.div>
         ))}
-      </div>
-    </article>
+      </motion.div>
+    </motion.article>
   );
 };
 

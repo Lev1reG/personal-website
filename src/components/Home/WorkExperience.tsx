@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { motion } from "motion/react";
 
 const WorkExperience = () => {
   const experiences: ExperienceProps[] = [
@@ -11,11 +12,17 @@ const WorkExperience = () => {
       href: "https://vhiweb.com",
       type: "Internship",
     },
-
   ];
 
   return (
-    <article id="workexperience" className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12">
+    <motion.article
+      id="workexperience"
+      className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
       <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
         Work Experience
       </h1>
@@ -32,7 +39,7 @@ const WorkExperience = () => {
           />
         ))}
       </div>
-    </article>
+    </motion.article>
   );
 };
 

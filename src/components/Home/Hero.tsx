@@ -2,6 +2,7 @@ import ProfilePicture from "@/assets/Profile-Picture.png";
 import TypewriterCycle from "@/components/TypeWriterCycle";
 import { Button } from "@/components/ui/button";
 import SocialMedia from "@/components/SocialMediaButton";
+import { motion } from "motion/react";
 
 const Hero = () => {
   const phrases = [
@@ -14,7 +15,14 @@ const Hero = () => {
   ];
 
   return (
-    <article id="hero" className="flex flex-col xl:flex-row items-center justify-center xl:justify-between space-y-5 pt-28 pb-20 lg:pt-36 lg:pb-24">
+    <motion.article
+      id="hero"
+      className="flex flex-col xl:flex-row items-center justify-center xl:justify-between space-y-5 pt-28 pb-20 lg:pt-36 lg:pb-24"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
       <div className="xl:max-w-xl flex flex-col items-center xl:items-start space-y-5">
         <img
           src={ProfilePicture}
@@ -44,24 +52,51 @@ const Hero = () => {
           prioritize privacy, intelligence, and real-world impact.
         </p>
         <div className="flex flex-col xl:flex-row items-center space-y-5 xl:space-y-0 xl:space-x-5">
-          <Button
-            asChild
-            variant="defaultCustom"
-            size="lg"
-            className="font-bold text-lg xl:text-xl"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
           >
-            <a
-              href="https://saweria.co/levireg"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              asChild
+              variant="defaultCustom"
+              size="lg"
+              className="font-bold text-lg xl:text-xl"
             >
-              Buy Me a Coffee
-            </a>
-          </Button>
+              <motion.a
+                href="https://saweria.co/levireg"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 30px rgba(var(--brand-500), 0.3)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                animate={{
+                  boxShadow: [
+                    "0 4px 15px rgba(var(--brand-500), 0.2)",
+                    "0 6px 20px rgba(var(--brand-500), 0.4)",
+                    "0 4px 15px rgba(var(--brand-500), 0.2)",
+                  ],
+                }}
+                transition={{
+                  boxShadow: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                  scale: { duration: 0.2 },
+                }}
+              >
+                Buy Me a Coffee
+              </motion.a>
+            </Button>
+          </motion.div>
           <SocialMedia />
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 };
 

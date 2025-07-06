@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const Education = () => {
   const experiences = [
     {
@@ -8,7 +10,14 @@ const Education = () => {
   ];
 
   return (
-    <article id="education" className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12">
+    <motion.article
+      id="education"
+      className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
       <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
         Education
       </h1>
@@ -22,7 +31,7 @@ const Education = () => {
           />
         ))}
       </div>
-    </article>
+    </motion.article>
   );
 };
 

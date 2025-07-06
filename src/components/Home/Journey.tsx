@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 interface Journey {
   title: string;
   description: string;
@@ -57,16 +59,41 @@ interface MyJourneyProps extends Journey {
 
 const MyJourney = ({ title, description, date, isLast }: MyJourneyProps) => {
   return (
-    <div className="flex flex-row space-x-2 lg:space-x-5">
+    <motion.div
+      className="flex flex-row space-x-2 lg:space-x-5"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-50px" }}
+    >
       <div className="flex flex-col items-center">
-        <div className="w-5 h-5 lg:w-7 lg:h-7 rounded-full bg-brand-500 shadow-sm z-10 flex-shrink-0" />
+        <motion.div
+          className="w-5 h-5 lg:w-7 lg:h-7 rounded-full bg-brand-500 shadow-sm z-10 flex-shrink-0"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          viewport={{ once: true }}
+        />
 
         {!isLast && (
-          <div className="w-0.5 h-full bg-neutral-900 dark:bg-neutral-100" />
+          <motion.div
+            className="w-0.5 h-full bg-neutral-900 dark:bg-neutral-100"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            style={{ originY: 0 }}
+          />
         )}
       </div>
 
-      <div className="w-full flex flex-col space-y-2 pb-4 lg:pb-8">
+      <motion.div
+        className="w-full flex flex-col space-y-2 pb-4 lg:pb-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
         <p className="text-sm lg:text-lg font-medium text-brand-600 dark:text-brand-400">
           {date}
         </p>
@@ -76,8 +103,8 @@ const MyJourney = ({ title, description, date, isLast }: MyJourneyProps) => {
         <p className="text-xs dark:text-neutral-400 text-neutral-600">
           {description}
         </p>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
