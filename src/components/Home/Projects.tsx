@@ -32,12 +32,12 @@ const Projects = () => {
   ];
 
   return (
-    <article className="flex flex-col items-center justify-center space-y-5 py-8">
+    <article className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8">
       <div className="flex flex-col items-center justify-center space-y-2">
-        <h1 className="text-3xl font-bold text-center dark:text-neutral-100">
+        <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
           Projects
         </h1>
-        <p className="text-base font-medium text-center dark:text-neutral-400 text-neutral-600">
+        <p className="text-base lg:text-lg font-medium text-center dark:text-neutral-400 text-neutral-600">
           Projects where I turn ideas into systems — crafted with care and
           purpose.
         </p>
@@ -73,7 +73,7 @@ const ProjectCard = ({
   return (
     <Card>
       <CardHeader>
-        <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+        <h2 className="text-lg lg:text-xl font-bold text-neutral-900 dark:text-neutral-100">
           {href ? (
             <a
               href={href}
