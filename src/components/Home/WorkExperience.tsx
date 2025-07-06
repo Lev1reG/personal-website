@@ -11,14 +11,15 @@ const WorkExperience = () => {
       href: "https://vhiweb.com",
       type: "Internship",
     },
+
   ];
 
   return (
-    <article className="flex flex-col items-center justify-center space-y-5 py-8">
-      <h1 className="text-3xl font-bold text-center dark:text-neutral-100">
+    <article className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12">
+      <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
         Work Experience
       </h1>
-      <div className="space-y-4">
+      <div className="w-full space-y-4">
         {experiences.map((exp, index) => (
           <Experience
             key={index}
@@ -53,34 +54,34 @@ const Experience = ({
   type,
 }: ExperienceProps) => {
   return (
-    <div className="w-full flex flex-col justify-center items-center space-y-2">
-      <div className="flex flex-col justify-between items-center space-y-2">
-        <div className="flex flex-col items-center space-y-2">
+    <div className="w-full flex flex-col justify-center items-center lg:items-start space-y-2">
+      <div className="w-full flex lg:flex-row flex-col justify-between items-center space-y-2 lg:space-y-0">
+        <div className="flex lg:flex-row flex-col items-center space-y-2 lg:space-y-0 lg:space-x-4">
           {href ? (
             <a
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg font-bold text-neutral-900 dark:text-neutral-100 hover:underline"
+              className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100 hover:underline"
             >
               {company}
             </a>
           ) : (
-            <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+            <h2 className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100">
               {company}
             </h2>
           )}
 
           <Badge variant="default">{type}</Badge>
         </div>
-        <p className="text-xs font-medium text-center dark:text-neutral-300 text-neutral-700">
+        <p className="text-xs lg:text-sm font-medium text-center dark:text-neutral-300 text-neutral-700">
           {date}
         </p>
       </div>
-      <h3 className="text-sm font-medium text-center dark:text-neutral-300 text-neutral-700">
+      <h3 className="text-sm lg:text-base font-medium text-center dark:text-neutral-300 text-neutral-700">
         {position}
       </h3>
-      <p className="text-xs text-center dark:text-neutral-400 text-neutral-600">
+      <p className="text-xs lg:text-sm text-center lg:text-left dark:text-neutral-400 text-neutral-600">
         {description}
       </p>
     </div>
