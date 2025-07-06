@@ -101,7 +101,7 @@ const ProjectCard = ({
   technologies,
 }: ProjectCardProps) => {
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader>
         <h2 className="text-lg lg:text-xl font-bold text-neutral-900 dark:text-neutral-100">
           {href ? (
