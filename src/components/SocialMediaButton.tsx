@@ -17,9 +17,9 @@ const SocialMediaButton = ({
   icon: IconComponent,
 }: SocialMediaButtonProps) => {
   return (
-    <Button asChild size="icon" variant="outlineCustom">
+    <Button asChild size="icon" variant="outlineCustom" className="size-9 lg:size-12">
       <a href={href} target="_blank" rel="noopener noreferrer">
-        <IconComponent weight="bold" size={25} />
+        <IconComponent weight="bold" className="size-6 lg:size-8" />
       </a>
     </Button>
   );
