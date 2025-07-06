@@ -14,7 +14,7 @@ const Hero = () => {
   ];
 
   return (
-    <article className="flex flex-col xl:flex-row items-center justify-center xl:justify-between space-y-5 pt-28 pb-20">
+    <article className="flex flex-col xl:flex-row items-center justify-center xl:justify-between space-y-5 pt-28 pb-20 lg:pt-36 lg:pb-24">
       <div className="xl:max-w-xl flex flex-col items-center xl:items-start space-y-5">
         <img
           src={ProfilePicture}
