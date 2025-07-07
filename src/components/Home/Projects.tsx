@@ -36,7 +36,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Lustrum DTEI XII",
+      title: "Lustrum DTETI XII",
       description:
         "Website of Lustrum DTETI, celebration of the 5th Anniversary of the Department of Electrical Engineering and Information Technology, Faculty of Engineering, Universitas Gadjah Mada.",
       technologies: ["Next.js", "Tailwind CSS"],
