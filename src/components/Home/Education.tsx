@@ -11,7 +11,7 @@ const Education = () => {
   ];
 
   return (
-    <motion.article
+    <motion.section
       id="education"
       className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12"
       initial={{ opacity: 0, y: 50 }}
@@ -55,7 +55,7 @@ const Education = () => {
           </motion.div>
         ))}
       </motion.div>
-    </motion.article>
+    </motion.section>
   );
 };
 
@@ -68,7 +68,11 @@ interface ExperienceProps {
 
 const Experience = ({ university, degree, date, href }: ExperienceProps) => {
   return (
-    <div className="flex flex-col justify-center items-center lg:items-start space-y-2">
+    <article
+      className="flex flex-col justify-center items-center lg:items-start space-y-2"
+      itemScope
+      itemType="http://schema.org/EducationalOrganization"
+    >
       <div className="w-full flex flex-col lg:flex-row lg:justify-between items-center space-y-2 lg:space-y-0">
         <h2 className="text-lg lg:text-2xl font-bold text-center text-neutral-900 dark:text-neutral-100">
           {href ? (
@@ -77,21 +81,29 @@ const Experience = ({ university, degree, date, href }: ExperienceProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-900 dark:text-neutral-100 hover:underline"
+              itemProp="educationCredentialAwarded"
+              aria-label={`Visit ${university} website`}
             >
               {university}
             </a>
           ) : (
-            university
+            <span itemProp="educationalCredentialAwarded">{university}</span>
           )}
         </h2>
-        <p className="text-xs lg:text-sm font-medium dark:text-neutral-400 text-neutral-600 text-center">
+        <time
+          className="text-xs lg:text-sm font-medium dark:text-neutral-400 text-neutral-600 text-center"
+          itemProp="dateCreated"
+        >
           {date}
-        </p>
+        </time>
       </div>
-      <p className="text-sm lg:text-base font-medium dark:text-neutral-300 text-neutral-700 text-center">
+      <p
+        className="text-sm lg:text-base font-medium dark:text-neutral-300 text-neutral-700 text-center"
+        itemProp="competencyRequired"
+      >
         {degree}
       </p>
-    </div>
+    </article>
   );
 };
 

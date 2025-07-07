@@ -15,21 +15,30 @@ const Hero = () => {
   ];
 
   return (
-    <motion.article
+    <motion.section
       id="hero"
       className="flex flex-col xl:flex-row items-center justify-center xl:justify-between space-y-5 pt-28 pb-20 lg:pt-36 lg:pb-24"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, margin: "-100px" }}
+      itemScope
+      itemType="http://schema.org/Person"
     >
       <div className="xl:max-w-xl flex flex-col items-center xl:items-start space-y-5">
         <img
           src={ProfilePicture}
-          alt="Profile Picture of Deren Tanaphan"
+          alt="Deren Tanaphan - Profile Picture"
           className="w-36 h-36 rounded-full border border-brand-300"
+          loading="eager"
+          width={144}
+          height={144}
+          itemProp="image"
         />
-        <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center xl:text-left dark:text-neutral-100 text-neutral-900">
+        <h1
+          className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center xl:text-left dark:text-neutral-100 text-neutral-900"
+          itemProp="name"
+        >
           <span className="text-brand-500">Hi, I'm Deren</span> - I Build Things
           That <span className="text-brand-500">Work </span> and{" "}
           <span className="text-brand-500">Last.</span>
@@ -44,7 +53,10 @@ const Hero = () => {
             pauseDuration={3000}
           />
         </h2>
-        <p className="font-medium text-base lg:text-lg text-center xl:text-left leading-snug dark:text-neutral-400 text-neutral-600">
+        <p
+          className="font-medium text-base lg:text-lg text-center xl:text-left leading-snug dark:text-neutral-400 text-neutral-600"
+          itemProp="description"
+        >
           Passionate about blockchain, cyber security, machine learning, and
           full stack software development. I build scalable, secure, and
           data-driven systems with a focus on clean code, privacy, and
@@ -88,6 +100,7 @@ const Hero = () => {
                   },
                   scale: { duration: 0.2 },
                 }}
+                aria-label="Support Deren Tanaphan by buying a coffee"
               >
                 Buy Me a Coffee
               </motion.a>
@@ -96,7 +109,7 @@ const Hero = () => {
           <SocialMedia />
         </div>
       </div>
-    </motion.article>
+    </motion.section>
   );
 };
 

@@ -51,7 +51,7 @@ const WorkExperience = () => {
   ];
 
   return (
-    <motion.article
+    <motion.section
       id="workexperience"
       className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12"
       initial={{ opacity: 0, y: 50 }}
@@ -97,7 +97,7 @@ const WorkExperience = () => {
           </motion.div>
         ))}
       </motion.div>
-    </motion.article>
+    </motion.section>
   );
 };
 
@@ -119,7 +119,11 @@ const Experience = ({
   type,
 }: ExperienceProps) => {
   return (
-    <div className="w-full flex flex-col justify-center items-center lg:items-start space-y-2">
+    <article
+      className="w-full flex flex-col justify-center items-center lg:items-start space-y-2"
+      itemScope
+      itemType="https://schema.org/WorkExperience"
+    >
       <div className="w-full flex lg:flex-row flex-col justify-between items-center space-y-2 lg:space-y-0">
         <div className="flex lg:flex-row flex-col items-center space-y-2 lg:space-y-0 lg:space-x-4">
           {href ? (
@@ -128,28 +132,47 @@ const Experience = ({
               target="_blank"
               rel="noopener noreferrer"
               className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100 hover:underline"
+              itemProp="worksFor"
+              itemScope
+              itemType="https://schema.org/Organization"
             >
-              {company}
+              <span itemProp="name">{company}</span>
             </a>
           ) : (
-            <h2 className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-              {company}
+            <h2
+              className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+              itemProp="worksFor"
+              itemScope
+              itemType="https://schema.org/Organization"
+            >
+              <span itemProp="name">{company}</span>
             </h2>
           )}
 
-          <Badge variant="default">{type}</Badge>
+          <Badge variant="default" itemProp="employmentType">
+            {type}
+          </Badge>
         </div>
-        <p className="text-xs lg:text-sm font-medium text-center dark:text-neutral-300 text-neutral-700">
+        <time
+          className="text-xs lg:text-sm font-medium text-center dark:text-neutral-300 text-neutral-700"
+          itemProp="datePublished"
+        >
           {date}
-        </p>
+        </time>
       </div>
-      <h3 className="text-sm lg:text-base font-medium text-center dark:text-neutral-300 text-neutral-700">
+      <h3
+        className="text-sm lg:text-base font-medium text-center dark:text-neutral-300 text-neutral-700"
+        itemProp="jobTitle"
+      >
         {position}
       </h3>
-      <p className="text-xs lg:text-sm text-center lg:text-left dark:text-neutral-400 text-neutral-600">
+      <p
+        className="text-xs lg:text-sm text-center lg:text-left dark:text-neutral-400 text-neutral-600"
+        itemProp="description"
+      >
         {description}
       </p>
-    </div>
+    </article>
   );
 };
 

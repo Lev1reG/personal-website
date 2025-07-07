@@ -114,7 +114,7 @@ const Projects = () => {
   ];
 
   return (
-    <motion.article
+    <motion.section
       id="projects"
       className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8"
       initial={{ opacity: 0, y: 50 }}
@@ -164,7 +164,7 @@ const Projects = () => {
           </motion.div>
         ))}
       </motion.div>
-    </motion.article>
+    </motion.section>
   );
 };
 
@@ -182,36 +182,51 @@ const ProjectCard = ({
   technologies,
 }: ProjectCardProps) => {
   return (
-    <Card className="h-full">
-      <CardHeader>
-        <h2 className="text-lg lg:text-xl font-bold text-neutral-900 dark:text-neutral-100">
-          {href ? (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-900 dark:text-neutral-100 hover:underline"
-            >
-              {title}
-            </a>
-          ) : (
-            title
-          )}
-        </h2>
-      </CardHeader>
-      <CardContent>
-        <p className="text-xs text-neutral-500">{description}</p>
-      </CardContent>
-      <CardFooter className="mt-auto">
-        <div className="flex flex-wrap gap-1">
-          {technologies.map((tech, index) => (
-            <Badge key={index} variant="outline" className="text-xs">
-              {tech}
-            </Badge>
-          ))}
-        </div>
-      </CardFooter>
-    </Card>
+    <article
+      className="h-full"
+      itemScope
+      itemType="https://schema.org/SoftwareApplication"
+    >
+      <Card className="h-full">
+        <CardHeader>
+          <h2 className="text-lg lg:text-xl font-bold text-neutral-900 dark:text-neutral-100">
+            {href ? (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-900 dark:text-neutral-100 hover:underline"
+                itemProp="name"
+                aria-label={`Visit ${title} project`}
+              >
+                {title}
+              </a>
+            ) : (
+              <span itemProp="name">{title}</span>
+            )}
+          </h2>
+        </CardHeader>
+        <CardContent>
+          <p className="text-xs text-neutral-500" itemProp="description">
+            {description}
+          </p>
+        </CardContent>
+        <CardFooter className="mt-auto">
+          <div className="flex flex-wrap gap-1">
+            {technologies.map((tech, index) => (
+              <Badge
+                key={index}
+                variant="outline"
+                className="text-xs"
+                itemProp="techStack"
+              >
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </CardFooter>
+      </Card>
+    </article>
   );
 };
 

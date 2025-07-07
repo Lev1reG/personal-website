@@ -17,7 +17,7 @@ const Journey = () => {
   ];
 
   return (
-    <motion.article
+    <motion.section
       id="journey"
       className="flex flex-col items-center justify-center space-y-5 lg:space-y-8 py-8 lg:py-12"
       initial={{ opacity: 0, y: 50 }}
@@ -46,7 +46,7 @@ const Journey = () => {
           />
         ))}
       </div>
-    </motion.article>
+    </motion.section>
   );
 };
 
@@ -56,12 +56,14 @@ interface MyJourneyProps extends Journey {
 
 const MyJourney = ({ title, description, date, isLast }: MyJourneyProps) => {
   return (
-    <motion.div
+    <motion.article
       className="flex flex-row space-x-2 lg:space-x-5"
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, margin: "-50px" }}
+      itemScope
+      itemType="https://schema.org/Event"
     >
       <div className="flex flex-col items-center">
         <motion.div
@@ -91,17 +93,27 @@ const MyJourney = ({ title, description, date, isLast }: MyJourneyProps) => {
         transition={{ duration: 0.6, delay: 0.3 }}
         viewport={{ once: true }}
       >
-        <p className="text-sm lg:text-lg font-medium text-brand-600 dark:text-brand-400">
+        <time
+          className="text-sm lg:text-lg font-medium text-brand-600 dark:text-brand-400"
+          itemProp="startDate"
+          dateTime={date}
+        >
           {date}
-        </p>
-        <h2 className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+        </time>
+        <h2
+          className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+          itemProp="name"
+        >
           {title}
         </h2>
-        <p className="text-xs dark:text-neutral-400 text-neutral-600">
+        <p
+          className="text-xs dark:text-neutral-400 text-neutral-600"
+          itemProp="description"
+        >
           {description}
         </p>
       </motion.div>
-    </motion.div>
+    </motion.article>
   );
 };
 
