@@ -22,17 +22,39 @@ const Education = () => {
       <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
         Education
       </h1>
-      <div className="w-full space-y-4">
+      <motion.div
+        className="w-full space-y-4"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+            },
+          },
+        }}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         {experiences.map((exp, index) => (
-          <Experience
+          <motion.div
             key={index}
-            university={exp.university}
-            degree={exp.degree}
-            date={exp.date}
-            href={exp.href}
-          />
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              show: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Experience
+              university={exp.university}
+              degree={exp.degree}
+              date={exp.date}
+              href={exp.href}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </motion.article>
   );
 };

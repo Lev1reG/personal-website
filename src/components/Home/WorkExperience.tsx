@@ -62,19 +62,41 @@ const WorkExperience = () => {
       <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-center dark:text-neutral-100">
         Work Experience
       </h1>
-      <div className="w-full space-y-4">
+      <motion.div
+        className="w-full space-y-4"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+            },
+          },
+        }}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         {experiences.map((exp, index) => (
-          <Experience
+          <motion.div
             key={index}
-            company={exp.company}
-            position={exp.position}
-            date={exp.date}
-            description={exp.description}
-            href={exp.href}
-            type={exp.type}
-          />
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              show: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Experience
+              company={exp.company}
+              position={exp.position}
+              date={exp.date}
+              description={exp.description}
+              href={exp.href}
+              type={exp.type}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </motion.article>
   );
 };
@@ -97,14 +119,7 @@ const Experience = ({
   type,
 }: ExperienceProps) => {
   return (
-    <motion.div
-      className="w-full flex flex-col justify-center items-center lg:items-start space-y-2"
-      variants={{
-        hidden: { opacity: 0, y: 50 },
-        show: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
+    <div className="w-full flex flex-col justify-center items-center lg:items-start space-y-2">
       <div className="w-full flex lg:flex-row flex-col justify-between items-center space-y-2 lg:space-y-0">
         <div className="flex lg:flex-row flex-col items-center space-y-2 lg:space-y-0 lg:space-x-4">
           {href ? (
@@ -134,7 +149,7 @@ const Experience = ({
       <p className="text-xs lg:text-sm text-center lg:text-left dark:text-neutral-400 text-neutral-600">
         {description}
       </p>
-    </motion.div>
+    </div>
   );
 };
 
