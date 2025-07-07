@@ -15,7 +15,7 @@ const WorkExperience = () => {
     {
       company: "ArachnoVa",
       position: "Full Stack Developer",
-      date: "Dec 2023 - Present",
+      date: "December 2023 - Present",
       description:
         "ArachnoVa is a community-based business by DTETI FT UGM (Department of Electrical Engineering and Information Engineering, Faculty of Engineering, University of Gadjah Mada) students which offers web design and development services to the customers. I work as a freelance Full Stack Developer at ArachnoVa, a community-based venture led by DTETI FT UGM students. Here, I'm tasked with developing and designing various web projects, utilizing expertise in both front-end and back-end technologies.",
       href: "https://www.arachnova.id/",
