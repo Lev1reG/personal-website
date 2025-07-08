@@ -62,8 +62,6 @@ const MyJourney = ({ title, description, date, isLast }: MyJourneyProps) => {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, margin: "-50px" }}
-      itemScope
-      itemType="https://schema.org/Event"
     >
       <div className="flex flex-col items-center">
         <motion.div
@@ -93,23 +91,13 @@ const MyJourney = ({ title, description, date, isLast }: MyJourneyProps) => {
         transition={{ duration: 0.6, delay: 0.3 }}
         viewport={{ once: true }}
       >
-        <time
-          className="text-sm lg:text-lg font-medium text-brand-600 dark:text-brand-400"
-          itemProp="startDate"
-          dateTime={date}
-        >
+        <time className="text-sm lg:text-lg font-medium text-brand-600 dark:text-brand-400">
           {date}
         </time>
-        <h2
-          className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100"
-          itemProp="name"
-        >
+        <h2 className="text-lg lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100">
           {title}
         </h2>
-        <p
-          className="text-xs dark:text-neutral-400 text-neutral-600"
-          itemProp="description"
-        >
+        <p className="text-xs dark:text-neutral-400 text-neutral-600">
           {description}
         </p>
       </motion.div>
